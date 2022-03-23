@@ -2,11 +2,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Consultar Alunos</title>
+    <title>Consultar Usuários</title>
 
     <!-- Funcao excluir pelo javascript -->
     <script>
-        // Passa o id do usuário para a exclusão
+        // Passa o id do usuário para a exclusão através da função javascript excluir
         function excluir(id) {
             if (confirm('deseja realmente excluir este Usuário ?')) {
                 location.href = 'excluir.php?id=' + id;
@@ -33,21 +33,18 @@
     </form>
 
     <?php
+    // Executa a conexao com o mysql e selecionar a base
+    include_once 'conect.cfg';
+
     //pegar o nome
     if (isset($_GET["nome"])) {
         if ($_GET["nome"] != "") {
             $nome = $_GET["nome"];
 
-            // abrir a conexao com o banco de dados
+            // instrucao sql para selecionar somente aquele registro que inicie com a string digitada e completa o restante encontrado através do coringa %      
+            $sql = "select * from  usuario where nome like '$nome%' ";
 
-            include_once 'conect.cfg';
-
-            // instrucao sql para selecionar somente aquele registro       
-            $sql = "select * from  usuario where nome like '" . $nome . "%'";
-
-            //"select * from  usuario
-            // mysqli_query() --> executa o mysqli no banco
-
+            //Faz a conexao e executa a instrucao carregada na varivael $sql e os envia para o banco mysql.
             $resultado = mysqli_query($con, $sql);
 
             // Verifica Se existe algum registro
@@ -55,7 +52,7 @@
                 // echo "encontrei";
     ?>
                 <br><br>
-                <table >
+                <table>
                     <tr>
                         <th>Nome</th>
                         <th>E-mail</th>
@@ -87,6 +84,7 @@
                             <td><?php echo $p; ?></td>
                             <td>
                             <td>
+                                <!-- Passa o id do usuário para a função javascript excluir-->
                                 <a href="#" onclick="excluir(<?php echo $row["id"]; ?>)">
                                     <button>Excluir</button></a>
                             </td>
@@ -107,7 +105,6 @@
     }
     ?>
 
-    </div> <!-- fecha a divisão do container -->
 </body>
 
 </html>

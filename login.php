@@ -6,9 +6,10 @@
 
 <body>
 
-
-
     <?php
+    // Executa a conexao com o mysql e selecionar a base
+    include_once 'conect.cfg';
+
     session_start(); //faz o arquivo iniciar a sessao com o browser
 
     // pegar dados via POST
@@ -17,25 +18,21 @@
     $email = $_POST["email"];
     // Recebe o valo do email
     $senha = $_POST["senha"];
-    // COnverte a senha em um hash criptografado de MD5
+    // Converte a senha em um hash criptografado de MD5
     $senha = md5($senha);
 
     //montar a instrução para ir ao banco
     //e selecionar o usuario que tenha este email
     $sql = "select * from usuario where email = '$email' AND senha = '$senha' ";
 
-    //abrir a conexao com o banco de dados
-    include_once 'conect.cfg';
-    //include_once './adm/logado.php';
-
     //executar conexao e roda a query sql
     $resultado = mysqli_query($con, $sql);
 
     if (mysqli_num_rows($resultado) == 1) {
 
+        // Variavel $row recebe o conteudo do array gerado pelo banco
         $row = mysqli_fetch_array($resultado);
-        //enviar dados para a sessão
-
+        //enviar dados recebidos do banco de dados para a sessão iniciada
         $_SESSION["email"] = $row["email"];
         $_SESSION["perfil"] = $row["perfil"];
         $_SESSION["tempo"] = time();
@@ -83,6 +80,7 @@
         // Verifica a seção de acordo com o perfíl
         if ($_SESSION["perfil"] == "1") {
             //$logado = $conteudo_prof ;
+            // Variavel $e recebe a linha contendo o email do usuario carregado pelo banco
             $e = $row["email"];
             echo '<h1>Perfil de Professor</h1>
                  <form action="alt_senha.php" method="post"> 
@@ -119,7 +117,7 @@
 
     <h1>Area de Gestão</h1>
     <?php
-
+    // Carrega o conteúdo da sessão email que foi criada no login
     echo "Seja Bem Vindo! " . $_SESSION['email'];
     echo "<p></p> <a href='logout.php'>Logout</a> </a>";
 

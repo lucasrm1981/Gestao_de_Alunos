@@ -42,9 +42,9 @@ create table tb_avaliacoes(
         comentario varchar(5000)
 
 );
-/* Inserir Tabela usuario */
+/* Inserir Tabela usuario 
 
-id, perfil, nome, email, senha, cep, endereco
+id, perfil, nome, email, senha, cep, endereco */
 
 insert into usuario values 
 (null,'adm','adm@adm.com',md5('1'),'2');
