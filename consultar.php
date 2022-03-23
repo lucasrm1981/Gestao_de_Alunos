@@ -23,7 +23,7 @@
 
     <a href="consultar.php">Consultar Usuários</a>
 
-    <h3 class="page-header">Consultar Usuários</h3>
+    <h3>Consultar Usuários</h3>
 
     <form action="consultar.php" method="get">
 
@@ -36,7 +36,7 @@
     // Executa a conexao com o mysql e selecionar a base
     include_once 'conect.cfg';
 
-    //pegar o nome
+    //pega o nome que será recebido via GET
     if (isset($_GET["nome"])) {
         if ($_GET["nome"] != "") {
             $nome = $_GET["nome"];
@@ -49,7 +49,7 @@
 
             // Verifica Se existe algum registro
             if (mysqli_num_rows($resultado) > 0) {
-                // echo "encontrei";
+
     ?>
                 <br><br>
                 <table>
@@ -67,7 +67,7 @@
                             <td><?php echo $row["nome"]; ?></td>
                             <td><?php echo $row["email"]; ?></td>
                             <?php
-                            // Verifica o perfil do usuario 0 Aluno, 1 Professor e 2 Coordenador
+                            // Verifica o perfil do usuario 0 Aluno, 1 Professor e 2 Coordenador e sera passado para variavel $p o valor correspondente
                             switch ($row["perfil"]) {
                                 case 2:
                                     $p = "Coordenador";
@@ -97,6 +97,7 @@
 
     <?php
             } else {
+                // Exibe a menssagem nenhum registro encontrado
                 echo "Nenhum registro encontrado";
             }
             // Fecha a conexao com o banco

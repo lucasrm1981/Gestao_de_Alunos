@@ -12,8 +12,7 @@
 
     session_start(); //faz o arquivo iniciar a sessao com o browser
 
-    // pegar dados via POST
-
+    // pega dados via POST
     // Recebe o valo do email
     $email = $_POST["email"];
     // Recebe o valo do email
@@ -79,7 +78,6 @@
         }
         // Verifica a seção de acordo com o perfíl
         if ($_SESSION["perfil"] == "1") {
-            //$logado = $conteudo_prof ;
             // Variavel $e recebe a linha contendo o email do usuario carregado pelo banco
             $e = $row["email"];
             echo '<h1>Perfil de Professor</h1>
@@ -95,7 +93,7 @@
         }
         // Verifica a seção de acordo com o perfíl
         if ($_SESSION["perfil"] == "0") {
-            //$logado = $conteudo_aluno ;
+            // Variavel $e recebe a linha contendo o email do usuario carregado pelo banco
             $e = $row["email"];
             echo '<h1>Perfil de Aluno</h1> 
                      <form action="alt_senha.php" method="post"> 
