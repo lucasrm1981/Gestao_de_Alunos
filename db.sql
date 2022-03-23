@@ -42,29 +42,21 @@ create table tb_avaliacoes(
         comentario varchar(5000)
 
 );
-/* Inserir Tabela usuario 
+/* Inserir dados na Tabela usuario 
 
-id, perfil, nome, email, senha, cep, endereco */
-
+id, nome, email, senha, perfil */
+/* Coordenador */
 insert into usuario values 
 (null,'adm','adm@adm.com',md5('1'),'2');
 
+/* Professor */
+insert into usuario values
+(null,'jose','jose@adm.com',md5('1'),'1');
 
+/* Alunos */
 insert into usuario values
 (null,'juca','juca@adm.com',md5('1'),'0');
 
 insert into usuario values
-(null,'jose','jose@adm.com',md5('1'),'1');
-
-insert into usuario values
 (null,'joao','joao@adm.com',md5('1'),'0');
 
-
-/* Alterar propriedade de uma coluna 
-
-ALTER TABLE Nome_da_Tabela CHANGE Nome_do_Campo Nome_do_Campo/Novo_Nome Tipo_de_Variavel(Tamanho) null/not null;
-
-ALTER TABLE usuario CHANGE nome nome varchar(30) null;
-
- Concertar o campo email 
- ALTER TABLE usuario CHANGE email email varchar(50) unique not null; */
