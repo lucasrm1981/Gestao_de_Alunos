@@ -1,4 +1,10 @@
-# Gestao_de_Alunos
+   <div style="display: inline_block"><br>
+     <img align="center" height="40" width="40" src="https://lksistemas.com.br/img/icons/PHP-Dark.svg">
+     <img align="center" height="40" width="40" src="https://lksistemas.com.br/img/icons/HTML.svg">
+     <img align="center" height="40" width="40" src="https://lksistemas.com.br/img/icons/CSS.svg">
+     <img align="center" height="40" width="40" src="https://lksistemas.com.br/img/icons/MySQL-Light.svg">
+     </div>
+<h1># Gestao de Alunos</h1>
  <br /><b>Versão 1.0</b> 
  <br/>Conexão com banco de dados MySQL feita através do arquivo conect.cfg.
  <br/>Arquivo de criaçao inicial do Banco de dados no arquivo db.sql
